@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
+
 
 class HomeController extends Controller
 {
@@ -24,5 +26,19 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+//__ deposite money function
+    function deposite(){
+        return view('deposite');
+        
+    }
+
+    function resend(){
+        
+        
+    }
+    function details($id) {
+
+       echo Crypt::decryptString($id) ;
     }
 }

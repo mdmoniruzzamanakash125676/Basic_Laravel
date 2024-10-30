@@ -14,7 +14,8 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }} {{Auth::user()->name}}
+                    {{ __('You are logged in!') }} {{Auth::user()->name}} <br>
+                    <a href="{{route('user.details',Crypt::encryptString('1'))}}" class="btn btn-sm btn-info">{{Auth::user()->name}} Details</a>
                 </div>
             </div>
         </div>
