@@ -46,6 +46,12 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
+//__class crud routes__//
+Route::get('/class',[App\Http\Controllers\Admin\ClassController::class,'index'])->name('class.index');
+Route::get('/create/class',[App\Http\Controllers\Admin\ClassController::class,'create'])->name('create.class');
+Route::post('/store/class',[App\Http\Controllers\Admin\ClassController::class,'store'])->name('store.class');
+
+
 
 Route::post('/store/contact',[HomeController::class,'store'])->name('store.contact');
 

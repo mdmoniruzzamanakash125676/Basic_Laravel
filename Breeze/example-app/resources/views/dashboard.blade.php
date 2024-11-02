@@ -9,14 +9,26 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                  
-                  Hey,  {{ Auth::user()->name}} Your Id is {{ Auth::user()->id}} ;<br>
-                  {{ __("You're logged in!") }}
+                    Hey, {{ Auth::user()->name }}! Your Id is {{ Auth::user()->id }};<br>
+                    {{ __("You're logged in!") }}
 
-                  <li><a href="{{route('user.details',Crypt::encryptString('2'))}}" class="btn btn-sm btn-info" >Monir Details</a></li>
+                    <div class="mb-4">
+    <ul class="list-inline">
+        <li class="list-inline-item">
+            <a href="{{route('class.index')}}" class="btn btn-info btn-sm">Class</a>
+        </li>
+        <li class="list-inline-item">
+            <a href="#" class="btn btn-danger btn-sm">Students</a>
+        </li>
+    </ul>
+</div>
 
-                </div>
-            </div>
+                    
+ <a href="{{ route('user.details', ['id' => Crypt::encryptString('2')]) }}" class="btn btn-primary btn-sm">Monir Details</a>
+                        
+                    
+     </div>
+ </div>
         </div>
     </div>
 </x-app-layout>
