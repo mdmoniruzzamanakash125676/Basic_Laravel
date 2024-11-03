@@ -50,6 +50,9 @@ Route::get('/dashboard', function () {
 Route::get('/class',[App\Http\Controllers\Admin\ClassController::class,'index'])->name('class.index');
 Route::get('/create/class',[App\Http\Controllers\Admin\ClassController::class,'create'])->name('create.class');
 Route::post('/store/class',[App\Http\Controllers\Admin\ClassController::class,'store'])->name('store.class');
+Route::get('/delete/class/{id}',[App\Http\Controllers\Admin\ClassController::class,'delete'])->name('class.delete');
+Route::get('/edit/class/{id}',[App\Http\Controllers\Admin\ClassController::class,'edit'])->name('class.edit');
+Route::post('/update/class/{id}',[App\Http\Controllers\Admin\ClassController::class,'update'])->name('class.update');
 
 
 

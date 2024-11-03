@@ -35,4 +35,36 @@ class ClassController extends Controller
      
       
    }
+
+   //__delete method__//
+   function delete($id) {
+    
+      DB::table('classes')->where('id',$id)->delete();
+      return redirect()->back()->with('success','successfully deleted!');
+   }
+
+   //__edit method__//
+      
+   public function edit($id)
+      {
+         $data = DB::table('classes')->where('id', $id)->first();
+         return view('admin.class.edit', compact('data'));
+      }
+
+      //__updated method__//
+      function update(Request $request,$id){
+         $request->validate([
+            'class_name' => 'required|',
+         ]);
+   
+         $data=array(
+            'class_name' => $request->class_name,
+         );
+   
+         DB::table('classes')->where('id',$id)->update($data);
+         return redirect()->back()->with('success','successfully updated!');
+        
+         
+      }
+   
 }
