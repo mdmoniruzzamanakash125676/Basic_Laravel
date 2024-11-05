@@ -3,21 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-
-
-
-
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+use App\Http\Controllers\Admin\StudentController;
 
 Route::get('/', function () {
  
@@ -53,6 +39,10 @@ Route::post('/store/class',[App\Http\Controllers\Admin\ClassController::class,'s
 Route::get('/delete/class/{id}',[App\Http\Controllers\Admin\ClassController::class,'delete'])->name('class.delete');
 Route::get('/edit/class/{id}',[App\Http\Controllers\Admin\ClassController::class,'edit'])->name('class.edit');
 Route::post('/update/class/{id}',[App\Http\Controllers\Admin\ClassController::class,'update'])->name('class.update');
+
+ //__students crud routes__//
+
+ Route::resource('students',StudentController::class);
 
 
 

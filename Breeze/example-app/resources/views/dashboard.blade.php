@@ -12,13 +12,14 @@
                     Hey, {{ Auth::user()->name }}! Your Id is {{ Auth::user()->id }};<br>
                     {{ __("You're logged in!") }}
 
-                    <div class="mb-4">
+     <div class="mb-4">
     <ul class="list-inline">
         <li class="list-inline-item">
             <a href="{{route('class.index')}}" class="btn btn-info btn-sm">Class</a>
         </li>
         <li class="list-inline-item">
-            <a href="#" class="btn btn-danger btn-sm">Students</a>
+        <a href="{{route('students.index')}}" class="btn btn-info btn-sm">Students</a>
+
         </li>
     </ul>
 </div>
