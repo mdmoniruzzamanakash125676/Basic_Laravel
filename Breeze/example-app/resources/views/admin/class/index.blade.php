@@ -31,7 +31,9 @@
                     </tr>
                     @endforeach
                 </tbody>
+               
             </table>
+            {{ $class->links() }}
         </div>
     </x-slot>
 

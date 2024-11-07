@@ -13,7 +13,7 @@ class ClassController extends Controller
    } 
 
    function index(){
-    $class=DB::table('classes')->get();
+    $class=DB::table('classes')->paginate(4);
     return view('admin.class.index',compact('class'));
     
    }
