@@ -13,9 +13,9 @@
             @if(session('success'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 {{ session('success') }}
-                <button type="button" class="btn-close text-center" data-bs-dismiss="alert" aria-label="Close"></button>
+                <button type="button" class="btn-close t" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
-        @endif
+            @endif
 
             <div class="card-body p-4">
                 <form action="{{ route('class.update', $data->id) }}" method="post">
