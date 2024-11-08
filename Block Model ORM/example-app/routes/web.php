@@ -7,7 +7,7 @@ use App\Http\Controllers\Admin\CategoryController;
 
 Route::get('/', function () {
  
-    return view('welcome');
+    return view('layouts.app');
 });
 
 /*
