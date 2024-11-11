@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    
-    <!-- Content Wrapper. Contains page content -->
+ <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -21,6 +20,16 @@
     </section>
 
     <!-- Main content -->
+
+     <!-- Success Message -->
+     @if(session('success'))
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    <strong>Success!</strong> {{ session('success') }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            @endif
     <section class="content">
       <div class="container-fluid">
         <div class="row">
