@@ -41,9 +41,9 @@ Route::DELETE('/category/delete/{id}',[CategoryController::class,'destroy'])->na
 Route::get('/subcategory/index',[SubcategoryController::class,'index'])->name('subcategory.index');
 Route::get('/subcategory/create',[SubcategoryController::class,'create'])->name('subcategory.create');
 Route::post('/subcategory/store',[SubcategoryController::class,'store'])->name('subcategory.store');
-//Route::get('/subcategory/edit/{id}',[SubcategoryController::class,'edit'])->name('subcategory.edit');
-//Route::put('/subcategory/update/{id}',[SubcategoryController::class,'update'])->name('subcategory.update');
-//Route::DELETE('/subcategory/delete/{id}',[SubcategoryController::class,'destroy'])->name('subcategory.delete');
+Route::get('/subcategory/edit/{id}',[SubcategoryController::class,'edit'])->name('subcategory.edit');
+Route::put('/subcategory/update/{id}',[SubcategoryController::class,'update'])->name('subcategory.update');
+Route::DELETE('/subcategory/delete/{id}',[SubcategoryController::class,'destroy'])->name('subcategory.destroy');
 
 
 
