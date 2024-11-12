@@ -29,6 +29,7 @@
   <link rel="stylesheet" href="{{asset('backend/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
   <link rel="stylesheet" href="{{asset('backend/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
   <link rel="stylesheet" href="{{asset('backend/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/toastr/toastr.css')}}">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -109,6 +110,50 @@
 <script src="{{asset('backend/plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
 <script src="{{asset('backend/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
 <script src="{{asset('backend/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('backend/plugins/toastr/toastr.min.js')}}"></script>
+<script src="{{asset('backend/plugins/sweetalert2/sweetalert2.min.js')}}"></script>
+<script>
+    @if(session('success'))
+        toastr.success("{{ session('success') }}");
+    @endif
+
+    @if(session('error'))
+        toastr.error("{{ session('error') }}");
+    @endif
+</script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    document.querySelectorAll('.delete-btn').forEach(button => {
+        button.addEventListener('click', function (event) {
+            event.preventDefault();
+            const categoryId = this.getAttribute('data-id');
+            const deleteForm = document.getElementById('delete-form');
+            deleteForm.action = `/category/delete/${categoryId}`;
+
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonText: 'No, cancel'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    deleteForm.submit();
+                    
+                    Swal.fire(
+                        'Deleted!',
+                        'Your category has been deleted.',
+                        'success'
+                    );
+                }
+            });
+        });
+    });
+</script>
+
 
 <script>
   $(function () {

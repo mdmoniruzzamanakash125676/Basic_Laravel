@@ -63,6 +63,27 @@
             </ul>
           </li>
 
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>SubCategories<i class="fas fa-angle-left right"></i></p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('subcategory.create')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add SubCategories</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>All SubCategories</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
           <!-- Other Menu Items (Labels, Profile, Logout) -->
           <li class="nav-header">LABELS</li>
           <li class="nav-item">

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\SubcategoryController;
 
 Route::get('/', function () {
  
@@ -34,8 +35,15 @@ Route::get('/category/create',[CategoryController::class,'create'])->name('categ
 Route::post('/category/store',[CategoryController::class,'store'])->name('category.store');
 Route::get('/category/edit/{id}',[CategoryController::class,'edit'])->name('category.edit');
 Route::put('/category/update/{id}',[CategoryController::class,'update'])->name('category.update');
-Route::get('/category/delete/{id}',[CategoryController::class,'destroy'])->name('category.delete');
+Route::DELETE('/category/delete/{id}',[CategoryController::class,'destroy'])->name('category.delete');
 
+//__subcategory crud routes__//
+Route::get('/subcategory/index',[SubcategoryController::class,'index'])->name('subcategory.index');
+Route::get('/subcategory/create',[SubcategoryController::class,'create'])->name('subcategory.create');
+Route::post('/subcategory/store',[SubcategoryController::class,'store'])->name('subcategory.store');
+//Route::get('/subcategory/edit/{id}',[SubcategoryController::class,'edit'])->name('subcategory.edit');
+//Route::put('/subcategory/update/{id}',[SubcategoryController::class,'update'])->name('subcategory.update');
+//Route::DELETE('/subcategory/delete/{id}',[SubcategoryController::class,'destroy'])->name('subcategory.delete');
 
 
 

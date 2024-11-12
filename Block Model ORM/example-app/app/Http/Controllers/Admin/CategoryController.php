@@ -41,7 +41,6 @@ class CategoryController extends Controller
             'category_slug'=>Str::of($request->category_name)->slug('-'),
         ]);
         return redirect()->back()->with('success', 'Category added successfully!');
-
      
    
       }
@@ -72,14 +71,23 @@ class CategoryController extends Controller
 
     //__delete method__//
 
- function destroy($id){
+/*  function destroy($id){
    // DB::table('categories')->where('id',$id)->delete();
 
    $category=Category::find($id);
    $category->delete();
     return redirect()->back()->with('success', 'Category deleted successfully!');
     
- }
+ } */
+ public function destroy($id){
+  $category = Category::find($id);
+  if ($category) {
+      $category->delete();
+      return redirect()->back()->with('success', 'Category deleted successfully!');
+  } else {
+      return redirect()->back()->with('error', 'Category not found!');
+  }
+}
 
 }
 

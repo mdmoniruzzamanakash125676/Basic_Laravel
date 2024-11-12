@@ -57,7 +57,14 @@
                         <td>{{ $row->category_slug }}</td>
                         <td>
                         <a href="{{route('category.edit',$row->id)}}" class="btn btn-sm btn-info me-2">Edit</a>
-                        <a href="{{route('category.delete',$row->id)}}" class="btn btn-sm btn-danger">Delete</a>
+                       <!-- Delete Button -->
+                    <a href="javascript:void(0);" class="btn btn-sm btn-danger delete-btn" data-id="{{ $row->id }}">Delete</a>
+
+                    <!-- Delete Form (Hidden) -->
+                    <form id="delete-form" method="POST" style="display: none;">
+                        @csrf
+                        @method('DELETE')
+                    </form>
                         </td>
                   </tr>
                    @endforeach
