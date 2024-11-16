@@ -159,6 +159,7 @@ return [
         /*
          * Package Service Providers...
          */
+        Intervention\Image\Laravel\ServiceProvider::class,
 
         /*
          * Application Service Providers...

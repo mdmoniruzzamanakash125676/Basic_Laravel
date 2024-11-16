@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\SubcategoryController;
+use App\Http\Controllers\Admin\PostController;
 
 Route::get('/', function () {
  
@@ -44,6 +45,15 @@ Route::post('/subcategory/store',[SubcategoryController::class,'store'])->name('
 Route::get('/subcategory/edit/{id}',[SubcategoryController::class,'edit'])->name('subcategory.edit');
 Route::put('/subcategory/update/{id}',[SubcategoryController::class,'update'])->name('subcategory.update');
 Route::DELETE('/subcategory/delete/{id}',[SubcategoryController::class,'destroy'])->name('subcategory.destroy');
+
+//__post crud routes__//
+
+//Route::get('/post/index',[PostController::class,'index'])->name('post.index');
+Route::get('/post/create',[PostController::class,'create'])->name('post.create');
+Route::post('/post/store',[PostController::class,'store'])->name('post.store');
+//Route::get('/post/edit/{id}',[Post::class,'edit'])->name('post.edit');
+//Route::put('/post/update/{id}',[PostController::class,'update'])->name('post.update');
+//Route::DELETE('/post/delete/{id}',[PostController::class,'destroy'])->name('post.destroy');
 
 
 
