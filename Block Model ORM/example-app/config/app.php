@@ -159,7 +159,7 @@ return [
         /*
          * Package Service Providers...
          */
-        Intervention\Image\Laravel\ServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -181,9 +181,12 @@ return [
     | the aliases are "lazy" loaded so they don't hinder performance.
     |
     */
+    
+
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
+        'Image' => Intervention\Image\Facades\Image::class,
     ])->toArray(),
 
 ];

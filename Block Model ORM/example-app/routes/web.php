@@ -48,7 +48,7 @@ Route::DELETE('/subcategory/delete/{id}',[SubcategoryController::class,'destroy'
 
 //__post crud routes__//
 
-//Route::get('/post/index',[PostController::class,'index'])->name('post.index');
+Route::get('/post/index',[PostController::class,'index'])->name('post.index');
 Route::get('/post/create',[PostController::class,'create'])->name('post.create');
 Route::post('/post/store',[PostController::class,'store'])->name('post.store');
 //Route::get('/post/edit/{id}',[Post::class,'edit'])->name('post.edit');

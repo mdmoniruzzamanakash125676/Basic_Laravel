@@ -1,5 +1,8 @@
 {
     "require": {
-        "laravel/tinker": "^2.10"
+        "laravel/tinker": "^2.10",
+        "intervention/image": "^2.7"
+        
     }
+    
 }

@@ -30,6 +30,10 @@
   <link rel="stylesheet" href="{{asset('backend/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
   <link rel="stylesheet" href="{{asset('backend/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
   <link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/toastr/toastr.css')}}">
+
+   <!-- summernote -->
+   <link rel="stylesheet" href="{{asset('backend/plugins/summernote/summernote-bs4.min.css')}}">
+ 
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -112,6 +116,10 @@
 <script src="{{asset('backend/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('backend/plugins/toastr/toastr.min.js')}}"></script>
 <script src="{{asset('backend/plugins/sweetalert2/sweetalert2.min.js')}}"></script>
+
+<!-- Summernote -->
+<script src="{{asset('backend/plugins/summernote/summernote-bs4.min.js')}}"></script>
+
 <script>
     @if(session('success'))
         toastr.success("{{ session('success') }}");
@@ -172,6 +180,14 @@
       "responsive": true,
     });
   });
+</script>
+<script>
+  $(function () {
+    // Summernote
+    $('#summernote').summernote()
+
+    
+  })
 </script>
 
 </body>

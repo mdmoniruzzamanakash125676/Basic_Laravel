@@ -35,7 +35,7 @@
                             <!-- /.card-header -->
 
                             <!-- Form Start -->
-                            <form action="{{route('post.store')}}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('post.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="card-body">
                                     <div class="form-group">
@@ -44,28 +44,20 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="category_id">Category</label>
-                                        <select name="subcategory_id" class="form-control" >
+                                        <select name="subcategory_id" class="form-control">
                                             <option disable selected>Choose Category</option>
                                             @foreach($category as $cat)
                                              @php
-                                                $subcategories=DB::table('subcategories')->where('category_id',$cat->id)->get();
+                                                $subcategories = DB::table('subcategories')->where('category_id', $cat->id)->get();
                                              @endphp
-                                                <option disable class="text-info">{{$cat->category_name}}</option>
+                                                <option disable class="text-info">{{ $cat->category_name }}</option>
                                                 @foreach($subcategories as $sub)
-                                                <option value="{{$sub->id}}">---{{$sub->subcategory_name}}</option>
+                                                <option value="{{ $sub->id }}">---{{ $sub->subcategory_name }}</option>
                                                 @endforeach
                                             @endforeach
-                                        </select>   
+                                        </select>
                                     </div>
                                     
-                                    <!-- <div class="form-group">
-                                        <label for="subcategory_id">SubCategory</label>
-                                        <select name="subcategory_id" class="form-control" id="subcategory_id">
-                                            <option value="">Select SubCategory</option>
-                                            <option value="1">Example One</option>
-                                            <option value="2">Example Two</option>
-                                        </select>
-                                    </div> -->
                                     <div class="form-group">
                                         <label for="post_date">Post Date</label>
                                         <input type="date" name="post_date" class="form-control" id="post_date" required>
@@ -76,13 +68,13 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="description">Description</label>
-                                        <textarea name="description" class="form-control" id="description" rows="4" placeholder="Write your description here..."></textarea>
+                                        <textarea name="description" class="form-control" id="summernote" rows="4" placeholder="Write your description here..."></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="file">File input</label>
                                         <div class="input-group">
                                             <div class="custom-file">
-                                                <input type="file" name="file" class="custom-file-input" id="file">
+                                                <input type="file" name="image" class="custom-file-input" id="file">
                                                 <label class="custom-file-label" for="file">Choose file</label>
                                             </div>
                                             <div class="input-group-append">
