@@ -10,20 +10,20 @@ use App\Models\Post;
 use DB;
 use Illuminate\Support\Str;
 use Auth;
-use Image;
+use File;
 
 class PostController extends Controller
 {
-   public function __construct()  {
-    $this->middleware('auth');
-   }
+    public function __construct()  {
+        $this->middleware('auth');
+    }
 
-   public function create() {
-    $category = Category::all();
-    return view('admin.post.create', compact('category'));
-   }
+    public function create() {
+        $category = Category::all();
+        return view('admin.post.create', compact('category'));
+    }
 
-   public function store(Request $request) {
+    public function store(Request $request) {
         $validated = $request->validate([
             'subcategory_id' => 'required',
             'title' => 'required',
@@ -57,9 +57,70 @@ class PostController extends Controller
         return redirect()->back()->with('success', 'Post added successfully!');
     }
 
-      //__index method__//
-  function index(){
-    $posts=Post::all();
-    return view('admin.post.index',compact('posts'));
-  }
+    public function index() {
+        $posts = Post::all();
+        return view('admin.post.index', compact('posts'));
+    }
+
+    public function destroy($id) {
+        $post = Post::find($id);
+
+        if (!$post) {
+            return redirect()->back()->with('error', 'Post not found!');
+        }
+
+        $filePath = public_path($post->image);
+
+        if (File::exists($filePath)) {
+            File::delete($filePath);
+        }
+
+        $post->delete();
+
+        return redirect()->back()->with('success', 'Post deleted successfully!');
+    }
+
+   public function edit($id)
+{
+    $post = Post::find($id);
+    $category = Category::all();
+    return view('admin.post.edit', compact('post', 'category'));
+}
+
+    public function update(Request $request, $id) {
+        $validated = $request->validate([
+            'subcategory_id' => 'required',
+            'title' => 'required',
+            'tags' => 'required',
+            'description' => 'required',
+        ]);
+    
+        $post = Post::findOrFail($id);
+        $post->subcategory_id = $request->subcategory_id;
+        $post->category_id = Subcategory::find($request->subcategory_id)->category_id;
+        $post->title = $request->title;
+        $post->slug = Str::slug($request->title, '-');
+        $post->post_date = $request->post_date;
+        $post->tags = $request->tags;
+        $post->description = $request->description;
+        $post->status = $request->status ?? 0;
+    
+        // Handle image upload
+        if ($request->hasFile('image')) {
+            $oldImagePath = public_path($post->image);
+            if (File::exists($oldImagePath)) {
+                File::delete($oldImagePath);
+            }
+            $image = $request->file('image');
+            $imageName = $post->slug . '.' . $image->getClientOriginalExtension();
+            $image->storeAs('media/', $imageName);
+            $post->image = 'media/' . $imageName;
+        }
+    
+        $post->save();
+    
+        return redirect()->route('post.index')->with('success', 'Post updated successfully!');
+    } 
+    
+    
 }

@@ -68,11 +68,11 @@
                                             </td>
                                              <td>
                                                 <div class="btn-group" role="group" aria-label="Actions">
-                                                    <a href="" class="btn btn-sm btn-info me-1">Edit</a>
+                                                    <a href="{{ route('post.edit', $row->id) }}" class="btn btn-sm btn-info me-1">Edit</a>
                                                     <button class="btn btn-sm btn-danger delete-btn" data-id="{{ $row->id }}">Delete</button>
                                                 </div>
 
-                                                <form id="delete-form-{{ $row->id }}" action="" method="POST" style="display: none;">
+                                                <form id="delete-form-{{ $row->id }}" action="{{ route('post.destroy', $row->id) }}" method="POST" style="display: none;">
                                                     @csrf
                                                     @method('DELETE')
                                                 </form>

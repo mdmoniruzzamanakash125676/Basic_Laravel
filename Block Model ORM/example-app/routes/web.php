@@ -51,9 +51,9 @@ Route::DELETE('/subcategory/delete/{id}',[SubcategoryController::class,'destroy'
 Route::get('/post/index',[PostController::class,'index'])->name('post.index');
 Route::get('/post/create',[PostController::class,'create'])->name('post.create');
 Route::post('/post/store',[PostController::class,'store'])->name('post.store');
-//Route::get('/post/edit/{id}',[Post::class,'edit'])->name('post.edit');
-//Route::put('/post/update/{id}',[PostController::class,'update'])->name('post.update');
-//Route::DELETE('/post/delete/{id}',[PostController::class,'destroy'])->name('post.destroy');
+Route::get('/post/edit/{id}',[PostController::class,'edit'])->name('post.edit');
+Route::put('/post/update/{id}',[PostController::class,'update'])->name('post.update');
+Route::DELETE('/post/delete/{id}',[PostController::class,'destroy'])->name('post.destroy');
 
 
 
