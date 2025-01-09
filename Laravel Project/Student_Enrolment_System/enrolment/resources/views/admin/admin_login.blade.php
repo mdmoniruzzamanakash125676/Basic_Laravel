@@ -29,6 +29,14 @@
           <div class="card col-lg-4 mx-auto">
             <div class="card-body px-5 py-5">
               <h3 class="card-title text-left mb-3">Login</h3>
+
+              <p class="alert-danger"><?php
+                $exception=Session::get('exception');
+                  if($exception){
+                    echo $exception;
+                    Session::put('exception',null);
+                  }
+              ?></p>    
               <form method="post" action="{{url('/adminlogin')}}">
               @csrf
                 <div class="form-group">
