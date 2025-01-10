@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use DB;
+use Session;
+session_start();
 
 class FoodController extends Controller
 {
@@ -17,6 +20,14 @@ class FoodController extends Controller
                     ->with('food',$manage_student) ;
         
     
+        
+    }
+    function fooddelete($student_id) {
+        DB::table('student_tb1')
+                ->where('student_id',$student_id)  
+                ->delete();
+        return Redirect::to('/food');        
+
         
     }
 }

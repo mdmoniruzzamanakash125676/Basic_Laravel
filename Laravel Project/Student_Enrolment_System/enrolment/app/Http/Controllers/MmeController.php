@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use DB;
+use Session;
+session_start();
 
 class MmeController extends Controller
 {
@@ -16,7 +19,13 @@ class MmeController extends Controller
         return view('layout')
                     ->with('mme',$manage_student) ;
         
-    
+    }
+    function mmedelete($student_id) {
+        DB::table('student_tb1')
+                ->where('student_id',$student_id)  
+                ->delete();
+        return Redirect::to('/mme');        
+
         
     }
 }

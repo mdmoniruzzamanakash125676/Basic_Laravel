@@ -346,6 +346,29 @@
   <!-- Custom js for this page-->
   <script src="{{asset('js/dashboard_1.js')}}"></script>
   <!-- End custom js for this page-->
+<script>
+    var deleteLinks = document.querySelectorAll('.delete');
+
+    for (var i = 0; i < deleteLinks.length; i++) {
+      deleteLinks[i].addEventListener('click', function(event) {
+          event.preventDefault();
+
+          var choice = confirm(this.getAttribute('data-confirm'));
+
+          if (choice) {
+            window.location.href = this.getAttribute('href');
+          }
+      });
+    }
+</script>
+ 
+ <script src="{{asset('https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.2/bootbox.min.js')}}></script>
+
+
+  
+
+
+
 </body>
 
 

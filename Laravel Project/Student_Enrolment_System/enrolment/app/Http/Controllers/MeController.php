@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use DB;
+use Session;
+session_start();
 
 class MeController extends Controller
 {
@@ -17,6 +20,14 @@ class MeController extends Controller
                     ->with('me',$manage_student) ;
         
     
+        
+    }
+    function medelete($student_id) {
+        DB::table('student_tb1')
+                ->where('student_id',$student_id)  
+                ->delete();
+        return Redirect::to('/me');        
+
         
     }
 }

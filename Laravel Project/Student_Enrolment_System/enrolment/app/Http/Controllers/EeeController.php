@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use DB;
+use Session;
+session_start();
 
 class EeeController extends Controller
 {
@@ -17,6 +20,15 @@ class EeeController extends Controller
                     ->with('eee',$manage_student) ;
         
     
+        
+    }
+
+    function eeedelete($student_id) {
+        DB::table('student_tb1')
+                ->where('student_id',$student_id)  
+                ->delete();
+        return Redirect::to('/eee');        
+
         
     }
 }

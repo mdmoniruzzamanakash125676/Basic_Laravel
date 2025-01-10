@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use DB;
+use Session;
+session_start();
 
 class CivilController extends Controller
 {
@@ -17,6 +20,14 @@ class CivilController extends Controller
                     ->with('civil',$manage_student) ;
         
     
+        
+    }
+    function civildelete($student_id) {
+        DB::table('student_tb1')
+                ->where('student_id',$student_id)  
+                ->delete();
+        return Redirect::to('/civil');        
+
         
     }
 }

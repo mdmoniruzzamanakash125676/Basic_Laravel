@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use DB;
+use Session;
+session_start();
 
 class CseController extends Controller
 {
@@ -17,6 +20,14 @@ class CseController extends Controller
                     ->with('cse',$manage_student) ;
         
     
+        
+    }
+    function csedelete($student_id) {
+        DB::table('student_tb1')
+                ->where('student_id',$student_id)  
+                ->delete();
+        return Redirect::to('/cse');        
+
         
     }
 }
