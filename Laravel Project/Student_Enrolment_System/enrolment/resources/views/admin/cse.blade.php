@@ -47,8 +47,9 @@
                           </td>
                           
                           <td>
-                            <button class="btn btn-outline-primary">View</button>
-                            <button class="btn btn-outline-success">Edit</button>
+                          <a href="{{URL::to('/cse_view/'.$v_student->student_id)}}">
+                          <button class="btn btn-outline-primary">View</button>
+                          </a>                           
                             <a href="{{URL::to('/cse_delete/'.$v_student->student_id)}}" data-confirm="Are you sure to delete this item?" class="delete"><button class="btn btn-outline-danger">Delete</button></a>                           </td>
                       </tr>
                       @endforeach

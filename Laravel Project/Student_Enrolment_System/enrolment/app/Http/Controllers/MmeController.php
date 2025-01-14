@@ -28,4 +28,20 @@ class MmeController extends Controller
 
         
     }
+    function studentview($student_id) {
+        $student_description_view=DB::table('student_tb1')
+                                ->select('*')         
+                                ->where('student_id',$student_id)
+                                ->first();
+      /*   echo "</pre>";
+        print_r($student_description_view);
+        echo "</pre>"; */
+
+        $manage_student_view=view('admin.mmeview')
+                        ->with('student_description_profile',$student_description_view);
+        return view('layout')
+                    ->with('mmeview',$manage_student_view) ;      
+
+        
+    }
 }
