@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('student_layout')
 @section('content')
 <div class="col-sm-6 col-md-3 grid-margin">
               <div class="card">

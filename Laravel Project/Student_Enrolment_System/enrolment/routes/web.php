@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AddstudentsController;
 use App\Http\Controllers\AllstudentsController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TutionController;
 use App\Http\Controllers\CseController;
 use App\Http\Controllers\MeController;
@@ -30,9 +31,13 @@ Route::get('/', function () {
 Route::get('/backend', function () {
     return view('admin.admin_login');
 });
+//__Admin Login Page__
 Route::post('/adminlogin', [AdminController::class,'login_dashboard']);
 Route::get('/admin_dashboard', [AdminController::class,'admin_dashboard']);
 
+//__Student Login Page__
+Route::post('/studentlogin', [StudentController::class,'student_login']);
+Route::get('/student_dashboard', [StudentController::class,'student_dashboard']);
 //__logout__
 Route::get('/logout', [AdminController::class,'logout']);
 
@@ -57,6 +62,10 @@ Route::post('/student_update/{student_id}', [AllstudentsController::class,'stude
 
 //__allteacher__
 Route::get('/allteacher', [TeacherController::class,'allteacher']);
+//__addteacher__
+Route::get('/addteacher', [TeacherController::class,'addteacher']);
+Route::post('/saveteacher', [TeacherController::class, 'saveteacher']);
+
 //__tutionfee__
 Route::get('/tutionfee', [TutionController::class,'tutionfee']);
 //__CSE__
