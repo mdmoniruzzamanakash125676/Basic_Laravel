@@ -4,38 +4,68 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
-use DB;
-use Session;
-session_start();
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class StudentController extends Controller
 {
-    function student_login(Request $request){                    
+    // Student Login Function
+    public function student_login(Request $request)
+    {
+        $email = $request->student_email;
+        $password = md5($request->student_password);
+
        
-        $email=$request->student_email;
-        $password=md5($request->student_password);
+        $result = DB::table('student_tb1')
+            ->where('student_email', $email)
+            ->where('student_password', $password)
+            ->first();
 
-        $result=DB::table('student_tb1')
-        ->where('student_email',$email)
-        ->where('student_password',$password)
-        ->get();
+        if ($result) {
+           
+            Session::put('student_id', $result->student_id);
+            Session::put('student_name', $result->student_name);
 
-        /* echo "</pre>";
-        print_r ($result); */
-
-        if ($result){
-            return view('student.dashbord'); 
-        }
-        else{
-            Session::put('exception','Email or Password Invalid');
-           return Redirect::to('/');
+            return view ('student.dashbord'); 
+        } else {
+            
+            Session::put('exception', 'Email or Password Invalid');
+            return Redirect::to('/');
         }
     }
-    function student_dashboard() {
+
   
+    public function student_dashboard()
+    {
+        // Check if student is logged in
+        $student_id = Session::get('student_id');
+
+        if (!$student_id) {
+            return Redirect::to('/'); 
+        }
+
         return view('student.dashbord');
-        
     }
+
+
+ function studentprofile() {
+        $student_id=Session::get('student_id');
+        $student_description_view=DB::table('student_tb1')
+                                ->select('*')         
+                                ->where('student_id',$student_id)
+                                ->first(); 
+            /* echo "</pre>";
+            print_r($student_description_view);
+            echo "</pre>"; */ 
+
+        $manage_student_view=view('student.studentview')
+        ->with('student_description_profile',$student_description_view);
+        return view('student_layout')
+        ->with('studentview',$manage_student_view) ; 
+    } 
+
+
+} 
     
     
-}
+

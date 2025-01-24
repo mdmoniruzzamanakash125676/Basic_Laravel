@@ -41,6 +41,11 @@ Route::get('/student_dashboard', [StudentController::class,'student_dashboard'])
 //__logout__
 Route::get('/logout', [AdminController::class,'logout']);
 
+//__student Profile Page__
+Route::get('/student_profile', [StudentController::class,'studentprofile']);
+
+
+
 //__viewprofile__
 Route::get('/viewprofile', [AdminController::class,'viewprofile']);
 //__setting__

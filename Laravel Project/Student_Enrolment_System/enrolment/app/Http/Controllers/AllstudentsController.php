@@ -31,7 +31,7 @@ class AllstudentsController extends Controller
         
     }
     //student view method here
-    function studentview($student_id) {
+    function studentview() {
         $student_description_view=DB::table('student_tb1')
                                 ->select('*')         
                                 ->where('student_id',$student_id)
