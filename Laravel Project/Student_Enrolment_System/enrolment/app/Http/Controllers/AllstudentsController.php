@@ -23,6 +23,7 @@ class AllstudentsController extends Controller
     }
     //student delete method here
     function studentdelete($student_id) {
+       
         DB::table('student_tb1')
                 ->where('student_id',$student_id)  
                 ->delete();
@@ -31,7 +32,8 @@ class AllstudentsController extends Controller
         
     }
     //student view method here
-    function studentview() {
+    function studentview($student_id) {
+        
         $student_description_view=DB::table('student_tb1')
                                 ->select('*')         
                                 ->where('student_id',$student_id)
