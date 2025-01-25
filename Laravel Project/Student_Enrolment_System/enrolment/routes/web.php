@@ -43,6 +43,8 @@ Route::get('/logout', [AdminController::class,'logout']);
 
 //__student Profile Page__
 Route::get('/student_profile', [StudentController::class,'studentprofile']);
+Route::get('/student_setting', [StudentController::class,'studentsetting']);
+Route::post('/student_profile_update', [StudentController::class,'studentprofileupdate']);
 
 
 
