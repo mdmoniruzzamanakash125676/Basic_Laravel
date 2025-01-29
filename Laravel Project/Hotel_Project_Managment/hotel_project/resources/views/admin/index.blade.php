@@ -1,9 +1,21 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Admin Dashboard') }}
-        </h2>
-    </x-slot>
+<!DOCTYPE html>
+<html>
+  <head> 
+   @include('admin.css')
+  </head>
+  <body>
+            <!-- Tasks-->
+            
+            @include('admin.header')
+            <!-- Tasks end-->
+            
+        <!-- Sidebar Navidation Menus-->
+         @include('admin.sidebar')
+      <!-- Sidebar Navigation end-->
+        <!-- body section -->
+         @include('admin.body')
+        <!-- body section end-->
 
-    
-</x-app-layout>
+        @include('admin.footer')
+  </body>
+</html>

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,3 +22,7 @@ use App\Http\Controllers\HomeController;
 Route::get('/',[HomeController::class,'home']);
 
 Route::get('/home',[AdminController::class,'index'])->name('home');
+
+//room create and add
+Route::get('/create_room',[AdminController::class,'create_room']);
+Route::post('/add_room',[AdminController::class,'add_room']);
