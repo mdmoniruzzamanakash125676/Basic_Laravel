@@ -22,6 +22,7 @@ use App\Http\Controllers\HomeController;
 Route::get('/',[HomeController::class,'home']);
 
 Route::get('/home',[AdminController::class,'index'])->name('home');
+Route::get('/room_details/{id}',[HomeController::class,'room_details']);
 
 //room create and add
 Route::get('/create_room',[AdminController::class,'create_room']);
@@ -30,3 +31,4 @@ Route::get('/view_room',[AdminController::class,'view_room']);
 Route::get('/room_delete/{id}',[AdminController::class,'room_delete']);
 Route::get('/room_edit/{id}',[AdminController::class,'room_edit']);
 Route::post('/update_room/{id}',[AdminController::class,'update_room']);
+Route::post('/room_details/{id}',[AdminController::class,'room_details']);

@@ -17,7 +17,8 @@
                      </div>
                      <div class="bed_room" style="height: 220px;width: 370px;">
                         <h3>{{$rooms->room_title}}</h3>
-                        <p>{!!Str::limit($rooms->description,100)!!}</p>
+                        <p style="padding: 10px;">{!!Str::limit($rooms->description,100)!!}</p>
+                        <a href="{{url('room_details',$rooms->id)}}" class="btn btn-primary">Room Details</a>
                      </div>
                   </div>
                </div>

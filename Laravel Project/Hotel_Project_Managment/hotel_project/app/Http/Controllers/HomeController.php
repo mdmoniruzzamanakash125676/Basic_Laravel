@@ -13,4 +13,9 @@ class HomeController extends Controller
         return view ('home.index',compact('room'));
         
     }
+    public function room_details($id)  {
+        $room= Room::find($id);
+        return view ('home.room_details',compact('room'));
+        
+    }
 }
